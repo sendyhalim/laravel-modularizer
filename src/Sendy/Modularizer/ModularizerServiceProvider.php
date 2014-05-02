@@ -3,6 +3,7 @@ namespace Sendy\Modularizer;
 
 use Illuminate\Support\ServiceProvider;
 use Sendy\Modularizer\Commands\ModuleCreatorCommand;
+use Sendy\Modularizer\Creators\ModuleCreator;
 
 class ModularizerServiceProvider extends ServiceProvider {
 
@@ -41,7 +42,8 @@ class ModularizerServiceProvider extends ServiceProvider {
 	{
 		$this->app['modularizer.create-module'] = $this->app->share(function($app)
 		{
-			return new ModuleCreatorCommand();
+			$moduleCreator = new ModuleCreator($app['files']);
+			return new ModuleCreatorCommand($moduleCreator);
 		});
 	}
 }
