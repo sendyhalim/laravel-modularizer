@@ -13,7 +13,12 @@
         "illuminate/filesystem": "4.*"
     },
     "require-dev": {
-        "behat/behat": "2.5.*@stable"
+        "behat/behat": "2.5.*@stable",
+        "behat/mink": "v1.5.0",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "phpunit/phpunit": "3.*"
     },
     "config": {
         "bin-dir": "bin/"
