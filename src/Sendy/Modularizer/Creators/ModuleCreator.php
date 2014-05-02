@@ -30,6 +30,14 @@ class ModuleCreator extends Creator
 	{
 		$path = $this->removeTrailingSlash($path);
 
+		if ($this->filesystem->exists($path))
+		{
+			$module = basename($path);
+			$this->setError("Module {$module} exists");
+
+			return false;
+		}
+
 		foreach ($this->directories as $dir)
 		{
 			$dirPath = "{$path}/{$dir}";
@@ -40,5 +48,7 @@ class ModuleCreator extends Creator
 		{
 			$this->create($file, $path, '');
 		}
+
+		return true;
 	}
 }

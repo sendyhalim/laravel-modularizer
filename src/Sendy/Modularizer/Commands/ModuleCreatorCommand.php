@@ -22,7 +22,9 @@ class ModuleCreatorCommand extends Command {
 	 */
 	protected $description = 'Create new module.';
 
-	private $moduleCretor;
+	private $moduleCreator;
+	private $moduleName;
+	private $modulePath;
 
 	/**
 	 * Create a new command instance.
@@ -45,16 +47,21 @@ class ModuleCreatorCommand extends Command {
 	{
 		$path = $this->getPath();
 
-		$this->moduleCreator->make($path);
+		if($this->moduleCreator->make($path))
+		{
+			return $this->info("{$this->moduleName} has been created in {$this->modulePath}");
+		}
+
+		$this->error("Could not create {$this->moduleName} in {$this->modulePath}");
+		$this->error($this->moduleCreator->getError());
 	}
 
 	protected function getPath()
 	{
-		$basePath = $this->argument('path');
-		$name = $this->argument('name');
-		$baseDir = $this->option('basedirectory');
+		$this->moduleName = $name = $this->argument('name');
+		$this->modulePath = $this->argument('path') . '/' . $this->option('basedirectory');
 
-		return "{$basePath}/{$baseDir}/{$name}";
+		return "{$this->modulePath}/{$this->moduleName}";
 	}
 
 	/**

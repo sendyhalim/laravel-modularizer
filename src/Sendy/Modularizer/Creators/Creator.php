@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 abstract class Creator
 {
 	protected $filesystem;
+	private $error;
 
 	public function __construct(Filesystem $f)
 	{
@@ -48,5 +49,15 @@ abstract class Creator
 		}
 
 		return $path;
+	}
+
+	public function setError($error)
+	{
+		$this->error = $error;
+	}
+
+	public function getError()
+	{
+		return $this->error;
 	}
 }
