@@ -7,7 +7,7 @@ use Config,
 
 use Illuminate\Support\ServiceProvider;
 
-class ModuleServiceProvider extends \Illuminate\Support\ServiceProvider
+class ModularizerModulesServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 	public function boot()
 	{
