@@ -2,6 +2,7 @@
 namespace Sendy\Modularizer;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Facades\Config;
 use Sendy\Modularizer\Commands\ModuleCreatorCommand;
 use Sendy\Modularizer\Creators\ModuleCreator;
 
@@ -21,6 +22,9 @@ class ModularizerServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+		// register the package so we can access config etc etc
+		$this->package('sendy/modularizer');
+
 		$this->registerModuleCreatorCommand();
 
 		$this->commands(
