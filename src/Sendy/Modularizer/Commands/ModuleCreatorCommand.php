@@ -5,6 +5,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Sendy\Modularizer\Creators\ModuleCreator;
+use Config;
 
 class ModuleCreatorCommand extends Command {
 
@@ -59,7 +60,7 @@ class ModuleCreatorCommand extends Command {
 	protected function getPath()
 	{
 		$this->moduleName = $name = $this->argument('name');
-		$this->modulePath = $this->argument('path') . '/' . $this->option('basedirectory');
+		$this->modulePath = $this->option('path') . '/' . $this->option('basedirectory');
 
 		return "{$this->modulePath}/{$this->moduleName}";
 	}
@@ -72,11 +73,6 @@ class ModuleCreatorCommand extends Command {
 	protected function getArguments()
 	{
 		return [
-			[
-				'path',
-				InputArgument::REQUIRED,
-				'Path of the module',
-			],
 			[
 				'name',
 			 	InputArgument::REQUIRED,
@@ -93,6 +89,13 @@ class ModuleCreatorCommand extends Command {
 	protected function getOptions()
 	{
 		return [
+			[
+				'path',
+				null,
+				InputOption::VALUE_OPTIONAL,
+				'Path of the modules',
+				Config::get('modularizer::module.base_path')
+			],
 			[
 				'basedirectory',
 				null,
