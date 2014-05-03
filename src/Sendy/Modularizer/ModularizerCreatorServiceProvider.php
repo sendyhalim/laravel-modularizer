@@ -6,7 +6,7 @@ use Illuminate\Facades\Config;
 use Sendy\Modularizer\Commands\ModuleCreatorCommand,
 	Sendy\Modularizer\Creators\ModuleCreator;
 
-class ModularizerServiceProvider extends ServiceProvider {
+class ModularizerCreatorServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
