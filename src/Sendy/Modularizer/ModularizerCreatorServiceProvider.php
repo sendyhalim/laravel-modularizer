@@ -3,8 +3,8 @@ namespace Sendy\Modularizer;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Facades\Config;
-use Sendy\Modularizer\Commands\ModuleCreatorCommand;
-use Sendy\Modularizer\Creators\ModuleCreator;
+use Sendy\Modularizer\Commands\ModuleCreatorCommand,
+	Sendy\Modularizer\Creators\ModuleCreator;
 
 class ModularizerServiceProvider extends ServiceProvider {
 

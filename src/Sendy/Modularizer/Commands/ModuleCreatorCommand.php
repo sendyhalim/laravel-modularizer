@@ -2,8 +2,8 @@
 namespace Sendy\Modularizer\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption,
+	Symfony\Component\Console\Input\InputArgument;
 use Sendy\Modularizer\Creators\ModuleCreator;
 use Config;
 
