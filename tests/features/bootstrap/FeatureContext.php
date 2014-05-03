@@ -34,6 +34,7 @@ class FeatureContext extends BehatContext
      */
     public function tearDown()
     {
+        // cleanups
         \Illuminate\Support\Facades\File::deleteDirectory(base_path('workbench/sendy/modularizer/tests/tmp'), true);
 
         $this->tester = null;
