@@ -48,8 +48,8 @@ class FeatureContext extends BehatContext
         $this->tester = new CommandTester(App::make('Sendy\Modularizer\Commands\ModuleCreatorCommand'));
 
         $this->tester->execute([
-            'path' => 'tests/tmp/modules',
             'name' => $moduleName,
+            '--path' => 'tests/tmp/modules',
         ]);
     }
 
