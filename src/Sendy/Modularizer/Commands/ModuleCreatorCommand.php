@@ -94,14 +94,14 @@ class ModuleCreatorCommand extends Command {
 				null,
 				InputOption::VALUE_OPTIONAL,
 				'Path of the modules',
-				Config::get('modularizer::module.base_path')
+				Config::get('modularizer::module.base_path'),
 			],
 			[
 				'basedirectory',
 				null,
 				InputOption::VALUE_OPTIONAL,
 				'Base directory of modules',
-				'Module',
+				Config::get('modularizer::module.base_directory'),
 			]
 		];
 
