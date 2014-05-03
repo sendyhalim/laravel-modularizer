@@ -53,7 +53,7 @@ class ModularizerModulesServiceProvider extends \Illuminate\Support\ServiceProvi
 
 	private function getModuleBasePath()
 	{
-		return Config::get('modularizer::module.base_path');
+		return Config::get('modularizer::module.base_path') . '/' . Config::get('modularizer::module.base_directory');
 	}
 
 	private function registerView($module, $viewPath)
