@@ -4,7 +4,9 @@ namespace Sendy\Modularizer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Facades\Config;
 use Sendy\Modularizer\Commands\ModuleCreatorCommand,
-	Sendy\Modularizer\Creators\ModuleCreator;
+	Sendy\Modularizer\Creators\ModuleCreator,
+	Sendy\Modularizer\Commands\PreparatorCommand,
+	Sendy\Modularizer\Creators\Preparator;
 
 class ModularizerCommandServiceProvider extends ServiceProvider {
 
@@ -26,9 +28,11 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		$this->package('sendy/modularizer');
 
 		$this->registerModuleCreatorCommand();
+		$this->registerPreparatorCommand();
 
 		$this->commands(
-				'modularizer.create-module'
+				'modularizer.create-module',
+				'modularizer.prepare'
 			);
 	}
 
@@ -48,6 +52,15 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		{
 			$moduleCreator = new ModuleCreator($app['files']);
 			return new ModuleCreatorCommand($moduleCreator);
+		});
+	}
+
+	public function registerPreparatorCommand()
+	{
+		$this->app['modularizer.prepare'] = $this->app->share(function($app)
+		{
+			$preparator = new Preparator($app['files']);
+			return new PreparatorCommand($preparator);
 		});
 	}
 }
