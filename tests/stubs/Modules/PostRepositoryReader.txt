@@ -1,8 +1,8 @@
 <?php
-namespace SendyHalim\Repositories\Read;
+namespace Modules\Repositories\Read;
 
-use SendyHalim\RepositoryInterfaces\Read\MessageToMeRepositoryReaderInterface;
-use SendyHalim\Repositories\BasicRepositoryReader;
+use Modules\RepositoryInterfaces\Read\MessageToMeRepositoryReaderInterface;
+use Modules\Repositories\BasicRepositoryReader;
 use MessageToMe;
 
 class MessageToMeRepositoryReader extends BasicRepositoryReader implements MessageToMeRepositoryReaderInterface

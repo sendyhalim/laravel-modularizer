@@ -41,7 +41,7 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @When /^I create a module with name \"([^\']*)\"$/
+     * @When /^I create a module with name \'([^\']*)\'$/
      */
     public function iCreateAModuleWithName($moduleName)
     {
@@ -52,8 +52,8 @@ class FeatureContext extends BehatContext
             '--path' => 'tests/tmp/modules',
         ]);
     }
-    /**
-     * @When /^I prepare modularizer with options \"([^\']*)\" and \"([^\']*)\"$/
+   /**
+     * @When /^I prepare modularizer with options \'([^\']*)\' and \'([^\']*)\'$/
      */
     public function iPrepareModularizer($path, $baseDirectory)
     {
@@ -71,7 +71,7 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @Then /^I should see \"([^\']*)\"$/
+     * @Then /^I should see \'([^\']*)\'$/
      */
     public function iShouldSee($output)
     {
@@ -93,7 +93,7 @@ class FeatureContext extends BehatContext
             // the basic for our stub lookup.
             $stubName = pathinfo($pathToFile)['filename'];
 
-            $expected = file_get_contents(__DIR__."/../../stubs/{$stubName}.txt");
+            $expected = file_get_contents(__DIR__."/../../stubs/{$baseDirectory}/{$stubName}.txt");
             $actual = file_get_contents($pathToFile);
 
             // Let's compare the stub against what was actually generated.

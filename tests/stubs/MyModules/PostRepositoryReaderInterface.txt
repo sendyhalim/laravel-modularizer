@@ -1,0 +1,9 @@
+<?php
+namespace MyModules\Admin\RepositoryInterfaces\Read;
+
+use MyModules\Core\RepositoryInterfaces\BasicRepositoryReaderInterface;
+
+interface MessageToMeRepositoryReaderInterface extends BasicRepositoryReaderInterface
+{
+
+}
