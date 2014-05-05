@@ -104,10 +104,6 @@ class ModuleCreatorCommand extends Command {
 				Config::get('modularizer::module.base_directory'),
 			]
 		];
-
-		array(
-			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
-		);
 	}
 
 }
