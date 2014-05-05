@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 abstract class Creator
 {
 	protected $filesystem;
+	protected $directories = [];
+	protected $files = [];
 	private $error;
 
 	public function __construct(Filesystem $f)
@@ -59,5 +61,15 @@ abstract class Creator
 	public function getError()
 	{
 		return $this->error;
+	}
+
+	public function getDirectories()
+	{
+		return $this->directories;
+	}
+
+	public function getFiles()
+	{
+		return $this->files;
 	}
 }

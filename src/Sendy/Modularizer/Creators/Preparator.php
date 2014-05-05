@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
  */
 class Preparator extends Creator
 {
-	private $directories = [
+	protected $directories = [
 		'Core/RepositoryInterfaces/Read',
 		'Core/RepositoryInterfaces/Write',
 		'Core/Repositories/Read',
@@ -20,7 +20,7 @@ class Preparator extends Creator
 	 * template path => destination path
 	 * @var array
 	 */
-	private $files = [
+	protected $files = [
 		'templates/repository-interfaces/BasicRepositoryReaderInterface.php' => 'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
 		'templates/repository-interfaces/BasicRepositoryWriterInterface.php' => 'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
 		'templates/repositories/BasicRepositoryReader.php'                   => 'Core/Repositories/Read/BasicRepositoryReader.php',

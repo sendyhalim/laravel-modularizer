@@ -1,13 +1,12 @@
 <?php
 namespace Sendy\Modularizer\Commands;
 
-use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption,
 	Symfony\Component\Console\Input\InputArgument;
 use Sendy\Modularizer\Creators\Preparator;
 use Config;
 
-class PreparatorCommand extends Command {
+class PreparatorCommand extends BaseCommand {
 
 	/**
 	 * The console command name.
@@ -23,7 +22,7 @@ class PreparatorCommand extends Command {
 	 */
 	protected $description = 'Preparation for repositories and validators.';
 
-	private $preparator;
+	protected $creator;
 	private $path;
 
 	/**
@@ -31,11 +30,11 @@ class PreparatorCommand extends Command {
 	 *
 	 * @return void
 	 */
-	public function __construct(Preparator $mc)
+	public function __construct(Preparator $p)
 	{
 		parent::__construct();
 
-		$this->preparator = $mc;
+		$this->creator = $p;
 	}
 
 	/**
@@ -48,13 +47,13 @@ class PreparatorCommand extends Command {
 		$path = $this->getPath();
 		$data = $this->getData();
 
-		if($this->preparator->make($path, $data))
+		if($this->creator->make($path, $data))
 		{
 			return $this->info("Preparation has been completed in {$this->path}");
 		}
 
 		$this->error("Could not make preparation in {$this->path}");
-		$this->error($this->preparator->getError());
+		$this->error($this->creator->getError());
 	}
 
 	protected function getPath()

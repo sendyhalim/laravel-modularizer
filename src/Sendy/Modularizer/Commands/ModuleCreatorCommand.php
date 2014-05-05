@@ -1,13 +1,12 @@
 <?php
 namespace Sendy\Modularizer\Commands;
 
-use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption,
 	Symfony\Component\Console\Input\InputArgument;
 use Sendy\Modularizer\Creators\ModuleCreator;
 use Config;
 
-class ModuleCreatorCommand extends Command {
+class ModuleCreatorCommand extends BaseCommand {
 
 	/**
 	 * The console command name.
@@ -23,7 +22,7 @@ class ModuleCreatorCommand extends Command {
 	 */
 	protected $description = 'Create new module.';
 
-	private $moduleCreator;
+	protected $creator;
 	private $moduleName;
 	private $modulePath;
 
@@ -36,7 +35,7 @@ class ModuleCreatorCommand extends Command {
 	{
 		parent::__construct();
 
-		$this->moduleCreator = $mc;
+		$this->creator = $mc;
 	}
 
 	/**
@@ -48,13 +47,13 @@ class ModuleCreatorCommand extends Command {
 	{
 		$path = $this->getPath();
 
-		if($this->moduleCreator->make($path))
+		if($this->creator->make($path))
 		{
 			return $this->info("{$this->moduleName} has been created in {$this->modulePath}");
 		}
 
 		$this->error("Could not create {$this->moduleName} in {$this->modulePath}");
-		$this->error($this->moduleCreator->getError());
+		$this->error($this->creator->getError());
 	}
 
 	protected function getPath()

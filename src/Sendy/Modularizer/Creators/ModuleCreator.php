@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
  */
 class ModuleCreator extends Creator
 {
-	private $directories = [
+	protected $directories = [
 		'Controllers',
 		'Repositories/Read',
 		'Repositories/Write',
@@ -17,7 +17,7 @@ class ModuleCreator extends Creator
 		'views'
 	];
 
-	private $files = [
+	protected $files = [
 		'routes.php'
 	];
 
