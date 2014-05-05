@@ -1,0 +1,14 @@
+<?php
+namespace SendyHalim\Repositories\Read;
+
+use SendyHalim\RepositoryInterfaces\Read\MessageToMeRepositoryReaderInterface;
+use SendyHalim\Repositories\BasicRepositoryReader;
+use MessageToMe;
+
+class MessageToMeRepositoryReader extends BasicRepositoryReader implements MessageToMeRepositoryReaderInterface
+{
+	public function __construct(MessageToMe $m)
+	{
+		parent::__construct($m);
+	}
+}

@@ -41,7 +41,7 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @When /^I create a module with name \'([^\']*)\'$/
+     * @When /^I create a module with name \"([^\']*)\"$/
      */
     public function iCreateAModuleWithName($moduleName)
     {
@@ -52,12 +52,54 @@ class FeatureContext extends BehatContext
             '--path' => 'tests/tmp/modules',
         ]);
     }
+    /**
+     * @When /^I prepare modularizer with options \"([^\']*)\" and \"([^\']*)\"$/
+     */
+    public function iPrepareModularizer($path, $baseDirectory)
+    {
+        $preparatorCommand = App::make('Sendy\Modularizer\Commands\PreparatorCommand');
+        $this->tester = new CommandTester($preparatorCommand);
+        $path = empty($path) ? 'tests/tmp/modules' : $path;
+        $baseDirectory = empty($baseDirectory) ? 'Modules' : $baseDirectory;
+
+        $this->tester->execute([
+            '--path'          => $path,
+            '--basedirectory' => $baseDirectory,
+        ]);
+
+        $this->shouldMatchMyStub($path, $baseDirectory, $preparatorCommand->getCreator());
+    }
 
     /**
-     * @Then /^I should see \'([^\']*)\'$/
+     * @Then /^I should see \"([^\']*)\"$/
      */
     public function iShouldSee($output)
     {
         assertContains($output, $this->tester->getDisplay());
+    }
+
+    /**
+     * @Given /^"([^"]*)" should match my stub$/
+     */
+    public function shouldMatchMyStub($path, $baseDirectory, $creator)
+    {
+        $path = $path . '/' . $baseDirectory;
+
+        foreach ($creator->getFiles() as $file)
+        {
+            $pathToFile = "{$path}/{$file}";
+
+            // We'll use the name of the generated file as
+            // the basic for our stub lookup.
+            $stubName = pathinfo($pathToFile)['filename'];
+
+            $expected = file_get_contents(__DIR__."/../../stubs/{$stubName}.txt");
+            $actual = file_get_contents($pathToFile);
+
+            // Let's compare the stub against what was actually generated.
+            assertEquals($expected, $actual);
+        }
+
+
     }
 }
