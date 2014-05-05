@@ -16,12 +16,16 @@ class Preparator extends Creator
 		'Core/Validators/Interfaces',
 	];
 
+	/**
+	 * template path => destination path
+	 * @var array
+	 */
 	private $files = [
-		'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
-		'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
-		'Core/Repositories/Read/BasicRepositoryReader.php',
-		'Core/Repositories/Write/BasicRepositoryWriter.php',
-		'Core/Validators/Interfaces/ValidatorInterface.php',
+		'templates/repository-interfaces/BasicRepositoryReaderInterface.php' => 'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
+		'templates/repository-interfaces/BasicRepositoryWriterInterface.php' => 'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
+		'templates/repositories/BasicRepositoryReader.php'                   => 'Core/Repositories/Read/BasicRepositoryReader.php',
+		'templates/repositories/BasicRepositoryWriter.php'                   => 'Core/Repositories/Write/BasicRepositoryWriter.php',
+		'templates/validators/ValidatorInterface.php'                        => 'Core/Validators/Interfaces/ValidatorInterface.php',
 	];
 
 	public function __construct(Filesystem $f)
@@ -29,7 +33,7 @@ class Preparator extends Creator
 		parent::__construct($f);
 	}
 
-	public function make($path)
+	public function make($path, $data)
 	{
 		$path = $this->removeTrailingSlash($path);
 
@@ -48,11 +52,23 @@ class Preparator extends Creator
 			$this->prepareDirectory($dirPath);
 		}
 
-		foreach ($this->files as $file)
+		foreach ($this->files as $templateFile => $destinationFile)
 		{
-			$this->create($file, $path, '');
+			$templateFile = __DIR__ . "/{$templateFile}";
+			$template = $this->makeTemplate(file_get_contents($templateFile), $data);
+			$this->create($destinationFile, $path, $template);
 		}
 
 		return true;
+	}
+
+	protected function makeTemplate($templateFile, $data)
+	{
+		foreach ($data as $key => $value)
+		{
+			$templateFile = preg_replace("/\{\{$key\}\}/i", $value, $templateFile);
+		}
+
+		return $templateFile;
 	}
 }

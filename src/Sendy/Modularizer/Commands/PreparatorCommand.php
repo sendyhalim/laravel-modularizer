@@ -46,8 +46,9 @@ class PreparatorCommand extends Command {
 	public function fire()
 	{
 		$path = $this->getPath();
+		$data = $this->getData();
 
-		if($this->preparator->make($path))
+		if($this->preparator->make($path, $data))
 		{
 			return $this->info("Preparation has been completed in {$this->path}");
 		}
@@ -58,7 +59,12 @@ class PreparatorCommand extends Command {
 
 	protected function getPath()
 	{
-		return $this->path = $this->option('path');
+		return $this->path = $this->option('path') . '/' . $this->getBaseDirectory();
+	}
+
+	protected function getBaseDirectory()
+	{
+		return ucwords($this->option('basedirectory'));
 	}
 
 	/**
@@ -83,10 +89,22 @@ class PreparatorCommand extends Command {
 				'path',
 				null,
 				InputOption::VALUE_OPTIONAL,
-				'Path of the modules',
+				'base path to the core',
 				Config::get('modularizer::module.base_path'),
+			],
+			[
+				'basedirectory',
+				null,
+				InputOption::VALUE_OPTIONAL,
+				'Base directory of modules',
+				Config::get('modularizer::module.base_directory'),
 			]
 		];
+	}
+
+	protected function getData()
+	{
+		return ['basedirectory' => $this->getBaseDirectory()];
 	}
 
 }

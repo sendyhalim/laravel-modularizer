@@ -60,10 +60,16 @@ class ModuleCreatorCommand extends Command {
 	protected function getPath()
 	{
 		$this->moduleName = $name = $this->argument('name');
-		$this->modulePath = $this->option('path') . '/' . $this->option('basedirectory');
+		$this->modulePath = $this->option('path') . '/' . $this->getBaseDirectory();
 
 		return "{$this->modulePath}/{$this->moduleName}";
 	}
+
+	protected function getBaseDirectory()
+	{
+		return ucwords($this->option('basedirectory'));
+	}
+
 
 	/**
 	 * Get the console command arguments.
