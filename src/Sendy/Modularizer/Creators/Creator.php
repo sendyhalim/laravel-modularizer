@@ -53,6 +53,16 @@ abstract class Creator
 		return $path;
 	}
 
+	protected function makeTemplate($templateFile, $data)
+	{
+		foreach ($data as $key => $value)
+		{
+			$templateFile = preg_replace("/\{\{$key\}\}/i", $value, $templateFile);
+		}
+
+		return $templateFile;
+	}
+
 	public function setError($error)
 	{
 		$this->error = $error;

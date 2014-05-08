@@ -54,21 +54,14 @@ class Preparator extends Creator
 
 		foreach ($this->files as $templateFile => $destinationFile)
 		{
+			// get the template
 			$templateFile = __DIR__ . "/{$templateFile}";
 			$template = $this->makeTemplate(file_get_contents($templateFile), $data);
+
+			//create the template
 			$this->create($destinationFile, $path, $template);
 		}
 
 		return true;
-	}
-
-	protected function makeTemplate($templateFile, $data)
-	{
-		foreach ($data as $key => $value)
-		{
-			$templateFile = preg_replace("/\{\{$key\}\}/i", $value, $templateFile);
-		}
-
-		return $templateFile;
 	}
 }
