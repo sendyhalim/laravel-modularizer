@@ -67,13 +67,16 @@ class FeatureContext extends BehatContext
             '--basedirectory' => $baseDirectory,
         ]);
 
-        $this->shouldMatchMyStub($path, $baseDirectory, $preparatorCommand->getCreator());
+        // get path of destination files
+        $files = $preparatorCommand->getCreator()->getFiles();
+
+        $this->shouldMatchMyStub($path, $baseDirectory, $files);
     }
 
     /**
-     * @When /^I create a repository for model with arguments \'([^\']*)\' \'([^\']*)\' and options \'([^\']*)\' \'([^\']*)\'$/
+     * @When /^I create a repository for model with arguments \'([^\']*)\' \'([^\']*)\' and options \'([^\']*)\' \'([^\']*)\' \'([^\']*)\'$/
      */
-    public function iCreateARepositoryForModelWithArgumentsAndOptions($model, $module, $path, $baseNamespace)
+    public function iCreateARepositoryForModelWithArgumentsAndOptions($model, $module, $path, $baseNamespace, $baseDirectory)
     {
         $repositoryCreatorCommand = App::make('Sendy\Modularizer\Commands\RepositoryCreatorCommand');
         $this->tester = new CommandTester($repositoryCreatorCommand);
@@ -83,9 +86,19 @@ class FeatureContext extends BehatContext
             'module'          => $module,
             '--path'          => $path,
             '--basenamespace' => $baseNamespace,
+            '--basedirectory' => $baseDirectory,
         ]);
 
-        //$this->shouldMatchMyStub($path, $baseNamespace, $repositoryCreatorCommand->getCreator());
+        // get path of destination files
+        $files = $repositoryCreatorCommand->getCreator()->getFiles();
+        // replace to model name
+        foreach ($files as &$file)
+        {
+            $file = $this->makeTemplate($file, ['MODEL' => $model]);
+        }
+
+        // use dirname for path, because stubs will look for double base directory if we dont use dirname for path
+        $this->shouldMatchMyStub(dirname($path), "{$baseDirectory}/{$module}", $files);
     }
 
     /**
@@ -99,11 +112,11 @@ class FeatureContext extends BehatContext
     /**
      * @Given /^"([^"]*)" should match my stub$/
      */
-    public function shouldMatchMyStub($path, $baseDirectory, $creator)
+    public function shouldMatchMyStub($path, $baseDirectory, $files)
     {
         $path = $path . '/' . $baseDirectory;
 
-        foreach ($creator->getFiles() as $file)
+        foreach ($files as $file)
         {
             $pathToFile = "{$path}/{$file}";
 
@@ -119,5 +132,15 @@ class FeatureContext extends BehatContext
         }
 
 
+    }
+
+    private function makeTemplate($templateFile, $data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $templateFile = preg_replace("/\{\{$key\}\}/i", $value, $templateFile);
+        }
+
+        return $templateFile;
     }
 }

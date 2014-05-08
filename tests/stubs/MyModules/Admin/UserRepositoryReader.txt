@@ -1,0 +1,14 @@
+<?php
+namespace MyModules\Admin\Repositories\Read;
+
+use Admin\RepositoryInterfaces\Read\UserRepositoryReaderInterface;
+use Core\Repositories\BasicRepositoryReader;
+use User;
+
+class UserRepositoryReader extends BasicRepositoryReader implements UserRepositoryReaderInterface
+{
+	public function __construct(User $model)
+	{
+		parent::__construct($model);
+	}
+}
