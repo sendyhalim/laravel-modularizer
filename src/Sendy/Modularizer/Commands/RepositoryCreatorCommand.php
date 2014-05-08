@@ -88,6 +88,7 @@ class RepositoryCreatorCommand extends BaseCommand {
 			'MODEL' => $this->ucwordsArgument('model'),
 			'CORE'  => $this->option('basenamespace'),
 			'MODULE'=> $this->ucwordsArgument('module'),
+			'BASE_DIRECTORY' => $this->ucwordsOption('basedirectory'),
 		];
 	}
 
@@ -108,12 +109,20 @@ class RepositoryCreatorCommand extends BaseCommand {
 				$path,
 			],
 			[
+				'basedirectory',
+				null,
+				InputOption::VALUE_OPTIONAL,
+				'Base directory of modules',
+				Config::get('modularizer::module.base_directory'),
+			],
+			[
 				'basenamespace',
 				null,
 				InputOption::VALUE_OPTIONAL,
 				'Base namespace where you put your BasicRepositoryReader/WriterInterface and your BasicRepositoryReader/Writer',
 				'Core',
 			],
+
 		];
 	}
 }
