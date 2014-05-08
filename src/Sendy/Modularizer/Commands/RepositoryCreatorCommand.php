@@ -58,7 +58,7 @@ class RepositoryCreatorCommand extends BaseCommand {
 
 	protected function getPath()
 	{
-		return $this->path = $this->option('path').'/'.$this->ucwordsArgument('module').'/'.$this->ucwordsArgument('model');
+		return $this->path = $this->option('path').'/'.$this->ucwordsArgument('module');
 	}
 
 	/**
