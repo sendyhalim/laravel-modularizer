@@ -21,11 +21,11 @@ class Preparator extends Creator
 	 * @var array
 	 */
 	protected $files = [
-		'templates/repository-interfaces/BasicRepositoryReaderInterface.php' => 'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
-		'templates/repository-interfaces/BasicRepositoryWriterInterface.php' => 'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
-		'templates/repositories/BasicRepositoryReader.php'                   => 'Core/Repositories/Read/BasicRepositoryReader.php',
-		'templates/repositories/BasicRepositoryWriter.php'                   => 'Core/Repositories/Write/BasicRepositoryWriter.php',
-		'templates/validators/ValidatorInterface.php'                        => 'Core/Validators/Interfaces/ValidatorInterface.php',
+		'templates/repository-interfaces/BasicRepositoryReaderInterface.txt' => 'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
+		'templates/repository-interfaces/BasicRepositoryWriterInterface.txt' => 'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
+		'templates/repositories/BasicRepositoryReader.txt'                   => 'Core/Repositories/Read/BasicRepositoryReader.php',
+		'templates/repositories/BasicRepositoryWriter.txt'                   => 'Core/Repositories/Write/BasicRepositoryWriter.php',
+		'templates/validators/ValidatorInterface.txt'                        => 'Core/Validators/Interfaces/ValidatorInterface.php',
 	];
 
 	public function __construct(Filesystem $f)
