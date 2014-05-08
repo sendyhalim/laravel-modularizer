@@ -44,22 +44,21 @@ class RepositoryCreatorCommand extends BaseCommand {
 	 */
 	public function fire()
 	{
-		$module = $this->ucwordsArgument('module');
 		$path = $this->getPath();
 		$data = $this->getData();
 
 		if($this->creator->make($path, $data))
 		{
-			return $this->info("Repositories(Read and Write) for has been created for module {$module}.");
+			return $this->info("{$data['MODEL']} Repositories(Read and Write) has been created for module {$data['MODULE']}.");
 		}
 
-		$this->error("Could not create repositories for module {$module}.");
+		$this->error("Could not create {$data['MODEL']} Repositories for module {$data['MODULE']}.");
 		$this->error($this->creator->getError());
 	}
 
 	protected function getPath()
 	{
-		return $this->path = $this->option('path').'/'.$this->ucwordsArgument('model');
+		return $this->path = $this->option('path').'/'.$this->ucwordsArgument('module').'/'.$this->ucwordsArgument('model');
 	}
 
 	/**
@@ -99,13 +98,13 @@ class RepositoryCreatorCommand extends BaseCommand {
 	 */
 	protected function getOptions()
 	{
-		$path = Config::get('modularizer::module.base_path').'/'.Config::get('modularizer::module.base_directory').'/'.$this->ucwordsArgument('module');
+		$path = Config::get('modularizer::module.base_path').'/'.Config::get('modularizer::module.base_directory');
 		return [
 			[
 				'path',
 				null,
 				InputOption::VALUE_OPTIONAL,
-				'base path to the module',
+				'Path to module parent directory',
 				$path,
 			],
 			[

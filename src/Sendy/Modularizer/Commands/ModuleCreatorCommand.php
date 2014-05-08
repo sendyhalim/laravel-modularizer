@@ -58,15 +58,10 @@ class ModuleCreatorCommand extends BaseCommand {
 
 	protected function getPath()
 	{
-		$this->moduleName = $name = $this->argument('name');
-		$this->modulePath = $this->option('path') . '/' . $this->getBaseDirectory();
+		$this->moduleName = $name = $this->ucwordsArgument('name');
+		$this->modulePath = $this->option('path') . '/' . $this->ucwordsOption('basedirectory');
 
 		return "{$this->modulePath}/{$this->moduleName}";
-	}
-
-	protected function getBaseDirectory()
-	{
-		return ucwords($this->option('basedirectory'));
 	}
 
 

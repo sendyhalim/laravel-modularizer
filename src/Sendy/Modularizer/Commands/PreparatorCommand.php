@@ -58,12 +58,7 @@ class PreparatorCommand extends BaseCommand {
 
 	protected function getPath()
 	{
-		return $this->path = $this->option('path') . '/' . $this->getBaseDirectory();
-	}
-
-	protected function getBaseDirectory()
-	{
-		return ucwords($this->option('basedirectory'));
+		return $this->path = $this->option('path') . '/' . $this->ucwordsOption('basedirectory');
 	}
 
 	/**
@@ -103,7 +98,7 @@ class PreparatorCommand extends BaseCommand {
 
 	protected function getData()
 	{
-		return ['basedirectory' => $this->getBaseDirectory()];
+		return ['basedirectory' => $this->ucwordsOption('basedirectory')];
 	}
 
 }
