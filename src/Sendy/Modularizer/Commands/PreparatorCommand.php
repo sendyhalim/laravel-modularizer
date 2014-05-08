@@ -98,7 +98,7 @@ class PreparatorCommand extends BaseCommand {
 
 	protected function getData()
 	{
-		return ['basedirectory' => $this->ucwordsOption('basedirectory')];
+		return ['BASE_DIRECTORY' => $this->ucwordsOption('basedirectory')];
 	}
 
 }

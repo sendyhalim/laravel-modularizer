@@ -1,5 +1,5 @@
 <?php
-namespace {{MODULE}}\Repositories\Write;
+namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repositories\Write;
 
 use {{MODULE}}\RepositoryInterfaces\Write\{{MODEL}}RepositoryWriterInterface;
 use {{CORE}}\Repositories\BasicRepositoryWriter;

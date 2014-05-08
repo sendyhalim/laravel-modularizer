@@ -1,5 +1,5 @@
 <?php
-namespace {{MODULE}}\Repositories\Read;
+namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repositories\Read;
 
 use {{MODULE}}\RepositoryInterfaces\Read\{{MODEL}}RepositoryReaderInterface;
 use {{CORE}}\Repositories\BasicRepositoryReader;

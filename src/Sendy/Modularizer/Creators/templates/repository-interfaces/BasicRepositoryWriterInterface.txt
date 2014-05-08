@@ -1,7 +1,7 @@
 <?php
-namespace {{baseDirectory}}\Core\RepositoryInterfaces;
+namespace {{BASE_DIRECTORY}}\Core\RepositoryInterfaces;
 
-use {{baseDirectory}}\Core\Validators\Interfaces\ValidatorInterface;
+use {{BASE_DIRECTORY}}\Core\Validators\Interfaces\ValidatorInterface;
 
 interface BasicRepositoryWriterInterface
 {

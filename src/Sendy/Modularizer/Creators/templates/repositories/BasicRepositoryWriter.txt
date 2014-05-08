@@ -1,8 +1,8 @@
 <?php
-namespace {{baseDirectory}}\Core\Repositories;
+namespace {{BASE_DIRECTORY}}\Core\Repositories;
 
 use Eloquent;
-use {{baseDirectory}}\Core\Validators\Interfaces\ValidatorInterface;
+use {{BASE_DIRECTORY}}\Core\Validators\Interfaces\ValidatorInterface;
 
 class BasicRepositoryWriter
 {

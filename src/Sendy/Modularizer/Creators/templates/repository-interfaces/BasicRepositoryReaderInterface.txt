@@ -1,5 +1,5 @@
 <?php
-namespace {{baseDirectory}}\Core\RepositoryInterfaces;
+namespace {{BASE_DIRECTORY}}\Core\RepositoryInterfaces;
 
 interface BasicRepositoryReaderInterface
 {
