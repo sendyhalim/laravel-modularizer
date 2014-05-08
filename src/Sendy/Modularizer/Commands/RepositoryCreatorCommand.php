@@ -44,7 +44,7 @@ class RepositoryCreatorCommand extends BaseCommand {
 	 */
 	public function fire()
 	{
-		$module = $this->argument('module');
+		$module = $this->ucwordsArgument('module');
 		$path = $this->getPath();
 		$data = $this->getData();
 
@@ -59,7 +59,7 @@ class RepositoryCreatorCommand extends BaseCommand {
 
 	protected function getPath()
 	{
-		return $this->path = $this->option('path').'/'.$this->argument('model');
+		return $this->path = $this->option('path').'/'.$this->ucwordsArgument('model');
 	}
 
 	/**
@@ -86,9 +86,9 @@ class RepositoryCreatorCommand extends BaseCommand {
 	protected function getData()
 	{
 		return [
-			'MODEL' => $this->argument('model'),
+			'MODEL' => $this->ucwordsArgument('model'),
 			'CORE'  => $this->option('basenamespace'),
-			'MODULE'=> $this->argument('module'),
+			'MODULE'=> $this->ucwordsArgument('module'),
 		];
 	}
 
@@ -99,7 +99,7 @@ class RepositoryCreatorCommand extends BaseCommand {
 	 */
 	protected function getOptions()
 	{
-		$path = Config::get('modularizer::module.base_path').'/'.Config::get('modularizer::module.base_directory').'/'.$this->argument('module');
+		$path = Config::get('modularizer::module.base_path').'/'.Config::get('modularizer::module.base_directory').'/'.$this->ucwordsArgument('module');
 		return [
 			[
 				'path',
