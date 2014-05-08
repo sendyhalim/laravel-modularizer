@@ -81,7 +81,7 @@ class ModuleCreatorCommand extends BaseCommand {
 			[
 				'name',
 			 	InputArgument::REQUIRED,
-			 	'Name of the module to created.',
+			 	'Name of the module to be created.',
 			],
 		];
 	}

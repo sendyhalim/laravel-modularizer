@@ -18,4 +18,14 @@ abstract class BaseCommand extends Command
 	{
 		return $this->creator;
 	}
+
+	protected function ucwordsArgument($arg)
+	{
+		return ucwords($this->argument($arg));
+	}
+
+	protected function ucwordsOption($opt)
+	{
+		return ucwords($this->option($opt));
+	}
 }

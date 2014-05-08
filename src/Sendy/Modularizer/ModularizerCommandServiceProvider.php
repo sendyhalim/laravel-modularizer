@@ -6,7 +6,9 @@ use Illuminate\Facades\Config;
 use Sendy\Modularizer\Commands\ModuleCreatorCommand,
 	Sendy\Modularizer\Creators\ModuleCreator,
 	Sendy\Modularizer\Commands\PreparatorCommand,
-	Sendy\Modularizer\Creators\Preparator;
+	Sendy\Modularizer\Creators\Preparator,
+	Sendy\Modularizer\Commands\RepositoryCreatorCommand,
+	Sendy\Modularizer\Creators\RepositoryCreator;
 
 class ModularizerCommandServiceProvider extends ServiceProvider {
 
@@ -29,10 +31,12 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 
 		$this->registerModuleCreatorCommand();
 		$this->registerPreparatorCommand();
+		$this->registerRepositoryCreatorCommand();
 
 		$this->commands(
 				'modularizer.create-module',
-				'modularizer.prepare'
+				'modularizer.prepare',
+				'modularizer.create-repository'
 			);
 	}
 
@@ -46,7 +50,7 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		return array();
 	}
 
-	public function registerModuleCreatorCommand()
+	protected function registerModuleCreatorCommand()
 	{
 		$this->app['modularizer.create-module'] = $this->app->share(function($app)
 		{
@@ -55,12 +59,21 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		});
 	}
 
-	public function registerPreparatorCommand()
+	protected function registerPreparatorCommand()
 	{
 		$this->app['modularizer.prepare'] = $this->app->share(function($app)
 		{
 			$preparator = new Preparator($app['files']);
 			return new PreparatorCommand($preparator);
+		});
+	}
+
+	protected function registerRepositoryCreatorCommand()
+	{
+		$this->app['modularizer.create-repository'] = $this->app->share(function($app)
+		{
+			$repositorCreator = new RepositoryCreator($app['files']);
+			return new RepositoryCreatorCommand($repositorCreator);
 		});
 	}
 }

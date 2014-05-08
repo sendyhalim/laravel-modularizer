@@ -1,0 +1,9 @@
+<?php
+namespace {{MODULE}}\RepositoryInterfaces\Write;
+
+use {{CORE}}\RepositoryInterfaces\BasicRepositoryWriterInterface;
+
+interface {{MODEL}}RepositoryWriterInterface extends BasicRepositoryWriterInterface
+{
+
+}

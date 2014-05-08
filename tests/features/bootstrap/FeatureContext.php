@@ -71,6 +71,24 @@ class FeatureContext extends BehatContext
     }
 
     /**
+     * @When /^I create a repository for model with arguments \'([^\']*)\' \'([^\']*)\' and options \'([^\']*)\' \'([^\']*)\'$/
+     */
+    public function iCreateARepositoryForModelWithArgumentsAndOptions($model, $module, $path, $baseNamespace)
+    {
+        $repositoryCreatorCommand = App::make('Sendy\Modularizer\Commands\RepositoryCreatorCommand');
+        $this->tester = new CommandTester($repositoryCreatorCommand);
+
+        $this->tester->execute([
+            'model'           => $model,
+            'module'          => $module,
+            '--path'          => $path,
+            '--basenamespace' => $baseNamespace,
+        ]);
+
+        //$this->shouldMatchMyStub($path, $baseNamespace, $repositoryCreatorCommand->getCreator());
+    }
+
+    /**
      * @Then /^I should see \'([^\']*)\'$/
      */
     public function iShouldSee($output)
