@@ -1,7 +1,7 @@
 #Laravel 4 Modularizer
 ---
 
-Modularizer is a Laravel 4 plugin. Basically it is an artisan command creates module and auto validation repository based on given input.
+Modularizer is a Laravel 4 plugin. Basically it is an artisan command that creates module and auto validation repository based on given input.
 It is inspired by these amazing people:
 
 * [creolab's module](https://github.com/creolab/laravel-modules)
