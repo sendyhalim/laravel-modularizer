@@ -16,7 +16,7 @@ Add `"sendy/modularizer": "dev-master"` to your composer.json then run `composer
 ---
 ###Using it...
 ---
-First make you need to publish the config, fire up your terminal and move to your  and type
+First make you need to publish the config, fire up your terminal and type
 
 ```
 php artisan config:publish sendy/modularizer
