@@ -1,5 +1,10 @@
 #Laravel 4 Modularizer
 ---
+[https://github.com/sendyHalim/laravel-modularizer](https://github.com/sendyHalim/laravel-modularizer)
+
+Note: sorry if my english is not good
+
+This package is still in early development, but it is usable and already tested.
 
 Modularizer is a Laravel 4 plugin. Basically it is an artisan command that creates module and auto validation repository based on given input.
 It is inspired by these amazing people:
@@ -13,10 +18,23 @@ It is inspired by these amazing people:
 
 Add `"sendy/modularizer": "dev-master"` to your composer.json then run `composer update` in your terminal.
 
+Add `Sendy\Modularizer\ModularizerCommandServiceProvider` and `Sendy\Modularizer\ModularizerModulesServiceProvider` respectively to `app/config/app.php` service providers.
+
+
+* `Sendy\Modularizer\ModularizerCommandServiceProvider` is for registering commands.
+* `Sendy\Modularizer\ModularizerModulesServiceProvider` is for registering active modules(registers route and view namespace of  module).
+
+Last, (with default config)include this to your composer.json for autoloading
+```
+"psr-0":{
+            "Modules": "app/modules"
+        }
+```
+
 ---
 ###Using it...
 ---
-First make you need to publish the config, fire up your terminal and type
+First make you need to publish the config, fire up your terminal  and type
 
 ```
 php artisan config:publish sendy/modularizer
@@ -40,19 +58,6 @@ return [
 * `base_directory` is the base directory inside base path, by default it will make module in `app/modules/Modules`. With this, it's easy to include composer autoloading namespace by using `Modules` as base namespace.
 * `active` is an array of active modules, think of it as module registration.
 
-After publishing config, add `Sendy\Modularizer\ModularizerCommandServiceProvider` and `Sendy\Modularizer\ModularizerModulesServiceProvider` respectively to `app/config/app.php` service providers.
-
-
-* `Sendy\Modularizer\ModularizerCommandServiceProvider` is for registering commands.
-* `Sendy\Modularizer\ModularizerModulesServiceProvider` is for registering active modules(registers route and view namespace of  module).
-
-Last, (with default config)include this to your composer.json for autoloading
-```
-"psr-0":{
-            "Modules": "app/modules"
-        }
-```
-
 ---
 ##Available Commands
 ---
@@ -62,9 +67,11 @@ Last, (with default config)include this to your composer.json for autoloading
 php artisan modularizer:create-module
 ```
 arguments
+
 * Module name
 
 options
+
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config modules will be created in `app/modules/Modules` and base namespace will be `Modules`.
 
@@ -73,6 +80,7 @@ options
 php artisan modularizer:prepare
 ```
 options
+
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config `Core` will be created in `app/modules/Modules` and base namespace will be `Modules`.
 
@@ -81,10 +89,12 @@ options
 php artisan modularizer:create-repository
 ```
 arguments
+
 * Model name
 * Module name
 
 options
+
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config modules will be created in `app/modules/Modules` and base namespace will be `Modules`.
 * `--basenamespace` base namespace, default `Modules`.
@@ -163,6 +173,7 @@ php artisan modularizer:create-repository User Admin
 ```
 
 the above command will make repository(read and write) for model `User` inside `Admin` module. 4 Files will be created for you
+
 * `Admin/RepositoryInterfaces/Read/UserRepositoryReaderInterface`
 * `Admin/RepositoryInterfaces/Write/UserRepositoryWriterInterface`
 * `Admin/Repositories/Read/UserRepositoryReader`
