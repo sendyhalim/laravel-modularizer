@@ -51,6 +51,7 @@ arguments
 options
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config modules will be created in `app/modules/Modules` and base namespace will be `Modules`.
+
 ---
 
 ####Prepare modularizer, make `Core` for your modules
@@ -60,6 +61,7 @@ php artisan modularizer:prepare
 options
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config `Core` will be created in `app/modules/Modules` and base namespace will be `Modules`.
+
 ---
 #### Create repository
 ```
