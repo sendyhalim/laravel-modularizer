@@ -1,0 +1,12 @@
+<?php
+namespace Modules\Admin\Controllers;
+
+use BaseController;
+
+abstract class AdminModuleBaseController extends BaseController
+{
+	public function __construct()
+	{
+		$this->layout = '';
+	}
+}

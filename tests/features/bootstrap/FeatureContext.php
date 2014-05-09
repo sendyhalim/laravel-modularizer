@@ -45,12 +45,26 @@ class FeatureContext extends BehatContext
      */
     public function iCreateAModuleWithName($moduleName)
     {
-        $this->tester = new CommandTester(App::make('Sendy\Modularizer\Commands\ModuleCreatorCommand'));
+        $moduleCreatorCommand = App::make('Sendy\Modularizer\Commands\ModuleCreatorCommand');
+        $this->tester = new CommandTester($moduleCreatorCommand);
 
+        $baseDirectory = 'Modules';
+        $path = 'tests/tmp/modules';
         $this->tester->execute([
             'name' => $moduleName,
-            '--path' => 'tests/tmp/modules',
+            '--path' => $path,
+            '--basedirectory' => $baseDirectory,
         ]);
+
+        $files = $moduleCreatorCommand->getCreator()->getFiles();
+        $data['MODULE'] = $moduleName;
+        // replace placeholder
+        foreach ($files as &$file)
+        {
+            $file = $this->makeTemplate($file, $data);
+        }
+
+        $this->shouldMatchMyStub($path, "{$baseDirectory}/{$moduleName}", $files);
     }
    /**
      * @When /^I prepare modularizer with options \'([^\']*)\' and \'([^\']*)\'$/
@@ -91,10 +105,11 @@ class FeatureContext extends BehatContext
 
         // get path of destination files
         $files = $repositoryCreatorCommand->getCreator()->getFiles();
+        $data['MODEL'] = $model;
         // replace to model name
         foreach ($files as &$file)
         {
-            $file = $this->makeTemplate($file, ['MODEL' => $model]);
+            $file = $this->makeTemplate($file, $data);
         }
 
         // use dirname for path, because stubs will look for double base directory if we dont use dirname for path
