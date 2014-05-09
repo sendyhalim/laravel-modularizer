@@ -18,7 +18,8 @@ class ModuleCreator extends Creator
 	];
 
 	protected $files = [
-		'routes.php'
+		'templates/controllers/ModuleBaseController.txt' => 'Controllers/{{MODULE}}BaseController.php',
+		'templates/routes.txt'                           => 'routes.php'
 	];
 
 	public function __construct(Filesystem $f)
@@ -26,7 +27,7 @@ class ModuleCreator extends Creator
 		parent::__construct($f);
 	}
 
-	public function make($path)
+	public function make($path, $data)
 	{
 		$path = $this->removeTrailingSlash($path);
 
@@ -44,9 +45,17 @@ class ModuleCreator extends Creator
 			$this->prepareDirectory($dirPath);
 		}
 
-		foreach ($this->files as $file)
+		foreach ($this->files as $templateFile => $destinationFile)
 		{
-			$this->create($file, $path, '');
+			//replace placeholder in destination file
+			$destinationFile = $this->makeTemplate($destinationFile, $data);
+
+			//get the template file inside the templates dir
+			$templateFile = __DIR__ . "/{$templateFile}";
+			$template = $this->makeTemplate(file_get_contents($templateFile), $data);
+
+			//create the template
+			$this->create($destinationFile, $path, $template);
 		}
 
 		return true;

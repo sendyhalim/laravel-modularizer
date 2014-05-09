@@ -46,14 +46,23 @@ class ModuleCreatorCommand extends BaseCommand {
 	public function fire()
 	{
 		$path = $this->getPath();
+		$data = $this->getData();
 
-		if($this->creator->make($path))
+		if($this->creator->make($path, $data))
 		{
 			return $this->info("{$this->moduleName} has been created in {$this->modulePath}");
 		}
 
 		$this->error("Could not create {$this->moduleName} in {$this->modulePath}");
 		$this->error($this->creator->getError());
+	}
+
+	public function getData()
+	{
+		return [
+			'MODULE'         => $this->ucwordsArgument('name'),
+			'BASE_DIRECTORY' => $this->ucwordsOption('basedirectory')
+		];
 	}
 
 	protected function getPath()
