@@ -1,0 +1,12 @@
+<?php
+namespace Modules\Blog\Controllers;
+
+use BaseController;
+
+abstract class BlogModuleBaseController extends BaseController
+{
+	public function __construct()
+	{
+
+	}
+}

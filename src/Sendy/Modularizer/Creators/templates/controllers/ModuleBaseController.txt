@@ -7,6 +7,6 @@ abstract class {{MODULE}}ModuleBaseController extends BaseController
 {
 	public function __construct()
 	{
-		$this->layout = '';
+
 	}
 }

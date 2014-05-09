@@ -18,7 +18,7 @@ class ModuleCreator extends Creator
 	];
 
 	protected $files = [
-		'templates/controllers/ModuleBaseController.txt' => 'Controllers/{{MODULE}}BaseController.php',
+		'templates/controllers/ModuleBaseController.txt' => 'Controllers/{{MODULE}}ModuleBaseController.php',
 		'templates/routes.txt'                           => 'routes.php'
 	];
 
