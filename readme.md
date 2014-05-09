@@ -8,6 +8,12 @@ It is inspired by some of these amazing people:
 * [JeffreyWay's generator](https://github.com/JeffreyWay/Laravel-4-Generators)
 
 ---
+###Install
+---
+
+Add `"sendy/modularizer": "dev-master"` to your composer.json then run `composer update` in your terminal.
+
+---
 ###Using it...
 ---
 First make you need to publish the config, fire up your terminal and move to your  and type
@@ -40,7 +46,17 @@ After publishing config, add `Sendy\Modularizer\ModularizerCommandServiceProvide
 * `Sendy\Modularizer\ModularizerCommandServiceProvider` is for registering commands.
 * `Sendy\Modularizer\ModularizerModulesServiceProvider` is for registering active modules(registers route and view namespace of  module).
 
+Last, (with default config)include this to your composer.json for autoloading
+```
+"psr-0":{
+            "Modules": "app/modules"
+        }
+```
+
+---
 ##Available Commands
+---
+
 ####Create a module:
 ```
 php artisan modularizer:create-module
