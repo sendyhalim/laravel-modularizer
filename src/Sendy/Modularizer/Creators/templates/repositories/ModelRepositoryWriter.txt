@@ -1,7 +1,7 @@
 <?php
 namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repositories\Write;
 
-use {{MODULE}}\RepositoryInterfaces\Write\{{MODEL}}RepositoryWriterInterface;
+use {{BASE_DIRECTORY}}\{{MODULE}}\RepositoryInterfaces\Write\{{MODEL}}RepositoryWriterInterface;
 use {{CORE}}\Repositories\BasicRepositoryWriter;
 use {{MODEL}};
 

@@ -1,7 +1,7 @@
 <?php
 namespace Modules\Blog\Repositories\Read;
 
-use Blog\RepositoryInterfaces\Read\RoleRepositoryReaderInterface;
+use Modules\Blog\RepositoryInterfaces\Read\RoleRepositoryReaderInterface;
 use Haha\Repositories\BasicRepositoryReader;
 use Role;
 

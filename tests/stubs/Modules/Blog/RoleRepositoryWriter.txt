@@ -1,7 +1,7 @@
 <?php
 namespace Modules\Blog\Repositories\Write;
 
-use Blog\RepositoryInterfaces\Write\RoleRepositoryWriterInterface;
+use Modules\Blog\RepositoryInterfaces\Write\RoleRepositoryWriterInterface;
 use Haha\Repositories\BasicRepositoryWriter;
 use Role;
 

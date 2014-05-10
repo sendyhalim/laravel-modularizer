@@ -1,7 +1,7 @@
 <?php
 namespace MyModules\Admin\Repositories\Read;
 
-use Admin\RepositoryInterfaces\Read\UserRepositoryReaderInterface;
+use MyModules\Admin\RepositoryInterfaces\Read\UserRepositoryReaderInterface;
 use Core\Repositories\BasicRepositoryReader;
 use User;
 
