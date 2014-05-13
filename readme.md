@@ -2,8 +2,6 @@
 ---
 [https://github.com/sendyHalim/laravel-modularizer](https://github.com/sendyHalim/laravel-modularizer)
 
-Note: sorry if my english is not good
-
 This package is still in early development, but it is usable and already tested.
 
 Modularizer is a Laravel 4 plugin. Basically it is an artisan command that creates module and auto validation repository based on given input.
@@ -149,7 +147,7 @@ with default config it will create `Core` in `app/modules/Modules`
 
 ```
 
-All repositories and interfaces that are created by modularizer will automaticly extend BasicRepository(Reader/Writer) and its interface will automaticly extend BasicRepository(Reader/Writer)Interfaces
+All repositories and interfaces that are created by modularizer will automatically extend BasicRepository(Reader/Writer) and its interface will automatically extend BasicRepository(Reader/Writer)Interfaces
 
 Notice `ValidatorInterface.php`, everytime we save(create/update) with a repository, we need to pass a class that implements `ValidatorInterface` to the repository. First let's make a validator for model `User`
 
