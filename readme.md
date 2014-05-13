@@ -148,7 +148,9 @@ with default config it will create `Core` in `app/modules/Modules`
             - ValidatorInterface.php
 
 ```
+
 All repositories and interfaces that are created by modularizer will automaticly extend BasicRepository(Reader/Writer) and its interface will automaticly extend BasicRepository(Reader/Writer)Interfaces
+
 Notice `ValidatorInterface.php`, everytime we save(create/update) with a repository, we need to pass a class that implements `ValidatorInterface` to the repository. First let's make a validator for model `User`
 
 
