@@ -197,7 +197,7 @@ $userValidator = App::make('Modules\Admin\Validators\UserValidator');
 
 $repo = App::make('Modules\Admin\RepositoryInterfaces\Write\UserRepositoryWriterInterface');
 
-if ($repo->create($input, $userValidator)
+if ($repo->create($input, $userValidator))
 {
     // success
 }
