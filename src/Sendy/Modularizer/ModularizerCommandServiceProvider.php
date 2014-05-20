@@ -8,7 +8,9 @@ use Sendy\Modularizer\Commands\ModuleCreatorCommand,
 	Sendy\Modularizer\Commands\PreparatorCommand,
 	Sendy\Modularizer\Creators\Preparator,
 	Sendy\Modularizer\Commands\RepositoryCreatorCommand,
-	Sendy\Modularizer\Creators\RepositoryCreator;
+	Sendy\Modularizer\Creators\RepositoryCreator,
+	Sendy\Modularizer\Creators\EmptyCreator,
+	Sendy\Modularizer\Commands\ModuleMigrateMakeCommand;
 
 class ModularizerCommandServiceProvider extends ServiceProvider {
 
@@ -32,11 +34,13 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		$this->registerModuleCreatorCommand();
 		$this->registerPreparatorCommand();
 		$this->registerRepositoryCreatorCommand();
+		$this->registerModuleMigrateMakeCommand();
 
 		$this->commands(
 				'modularizer.create-module',
 				'modularizer.prepare',
-				'modularizer.create-repository'
+				'modularizer.create-repository',
+				'modularizer.make-migration'
 			);
 	}
 
@@ -74,6 +78,14 @@ class ModularizerCommandServiceProvider extends ServiceProvider {
 		{
 			$repositorCreator = new RepositoryCreator($app['files']);
 			return new RepositoryCreatorCommand($repositorCreator);
+		});
+	}
+
+	protected function registerModuleMigrateMakeCommand()
+	{
+		$this->app['modularizer.make-migration'] = $this->app->share(function($app)
+		{
+			return \App::make('Sendy\Modularizer\Commands\ModuleMigrateMakeCommand');
 		});
 	}
 }
