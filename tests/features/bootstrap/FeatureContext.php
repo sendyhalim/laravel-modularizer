@@ -145,8 +145,6 @@ class FeatureContext extends BehatContext
             // Let's compare the stub against what was actually generated.
             assertEquals($expected, $actual);
         }
-
-
     }
 
     private function makeTemplate($templateFile, $data)
