@@ -14,6 +14,7 @@ class ModuleCreator extends Creator
 		'Repositories/Write',
 		'RepositoryInterfaces/Read',
 		'RepositoryInterfaces/Write',
+		'database/migrations',
 		'views'
 	];
 
