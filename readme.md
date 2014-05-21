@@ -62,7 +62,7 @@ return [
 
 ####Create a module:
 ```
-php artisan modularizer:create-module
+php artisan modularizer:create-module <ModuleName>
 ```
 arguments
 
@@ -84,7 +84,7 @@ options
 
 #### Create repository
 ```
-php artisan modularizer:create-repository
+php artisan modularizer:create-repository <ModelName> <ModuleName>
 ```
 arguments
 
@@ -96,6 +96,23 @@ options
 * `--path` base path to modules to be created, default to `app/modules`.
 * `--basedirectory` base directory of modules, default to `Modules`, with default config modules will be created in `app/modules/Modules` and base namespace will be `Modules`.
 * `--basenamespace` base namespace, default `Modules`.
+
+#### Create migration for a module
+This command takes input and call `php artisan migrate:make` command with path edited to module path hence you need to specify your module name
+```
+php artisan modularizer:make-migration <MigrationName> <ModuleName>
+```
+arguments
+
+* Migration name
+* Module name
+
+options
+
+* `--path` path for migration file, with default config it will be `app/modules/ModuleName/database/migrations`.
+* `--basedirectory` base directory of modules, default to `Modules`
+* `--create` specify this if the migration is to create new table.(Same as laravel migration option)
+* `--table` specify this if the migration is to modify new table.(Same as laravel migration option)
 
 
 ---
