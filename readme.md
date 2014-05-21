@@ -135,6 +135,8 @@ with default config it will create Admin module in `app/modules/Modules`
     - RepositoryInterfaces
         - Read
         - Write
+    - database
+        - migrations
     - views
     - routes.php
 ```
