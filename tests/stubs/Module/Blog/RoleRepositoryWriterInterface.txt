@@ -1,0 +1,9 @@
+<?php
+namespace Module\Blog\RepositoryInterface\Write;
+
+use Module\Haha\RepositoryInterface\BasicRepositoryWriterInterface;
+
+interface RoleRepositoryWriterInterface extends BasicRepositoryWriterInterface
+{
+
+}

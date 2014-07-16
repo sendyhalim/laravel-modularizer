@@ -1,0 +1,14 @@
+<?php
+namespace Module\Blog\Repository\Read;
+
+use Module\Blog\RepositoryInterface\Read\RoleRepositoryReaderInterface;
+use Haha\Repository\BasicRepositoryReader;
+use Role;
+
+class RoleRepositoryReader extends BasicRepositoryReader implements RoleRepositoryReaderInterface
+{
+	public function __construct(Role $model)
+	{
+		parent::__construct($model);
+	}
+}

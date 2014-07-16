@@ -1,0 +1,12 @@
+<?php
+namespace {{BASE_DIRECTORY}}\{{MODULE}}\Controller;
+
+use BaseController;
+
+abstract class {{MODULE}}ModuleBaseController extends BaseController
+{
+	public function __construct()
+	{
+
+	}
+}

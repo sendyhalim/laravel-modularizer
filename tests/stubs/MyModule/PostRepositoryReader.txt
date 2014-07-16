@@ -1,0 +1,14 @@
+<?php
+namespace MyModule\Repository\Read;
+
+use MyModule\RepositoryInterface\Read\MessageToMeRepositoryReaderInterface;
+use MyModule\Repository\BasicRepositoryReader;
+use MessageToMe;
+
+class MessageToMeRepositoryReader extends BasicRepositoryReader implements MessageToMeRepositoryReaderInterface
+{
+	public function __construct(MessageToMe $m)
+	{
+		parent::__construct($m);
+	}
+}

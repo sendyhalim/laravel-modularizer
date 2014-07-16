@@ -1,0 +1,14 @@
+<?php
+namespace MyModule\Admin\Repository\Write;
+
+use MyModule\Admin\RepositoryInterface\Write\UserRepositoryWriterInterface;
+use Core\Repository\BasicRepositoryWriter;
+use User;
+
+class UserRepositoryWriter extends BasicRepositoryWriter implements UserRepositoryWriterInterface
+{
+	public function __construct(User $model)
+	{
+		parent::__construct($model);
+	}
+}

@@ -1,0 +1,14 @@
+<?php
+namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repository\Read;
+
+use {{BASE_DIRECTORY}}\{{MODULE}}\RepositoryInterface\Read\{{MODEL}}RepositoryReaderInterface;
+use {{CORE}}\Repository\BasicRepositoryReader;
+use {{MODEL}};
+
+class {{MODEL}}RepositoryReader extends BasicRepositoryReader implements {{MODEL}}RepositoryReaderInterface
+{
+	public function __construct({{MODEL}} $model)
+	{
+		parent::__construct($model);
+	}
+}

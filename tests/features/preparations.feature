@@ -6,9 +6,9 @@ Feature: Preparations
 
         Examples:
         | path                    | baseDirectory |
-        | tests/tmp/modules       | MyModules     |
-        | tests/tmp/random        | MyModules     |
-        | tests/tmp/random        | Modules       |
+        | tests/tmp/modules       | MyModule      |
+        | tests/tmp/random        | MyModule      |
+        | tests/tmp/random        | Module        |
 
     Scenario Outline: Preparing modularizer(fail)
         When I prepare modularizer with options '<path>' and '<baseDirectory>'
@@ -19,6 +19,6 @@ Feature: Preparations
 
         Examples:
         | path                    | baseDirectory |
-        | tests/tmp/modules       | MyModules     |
-        | tests/tmp/random        | MyModules     |
-        | tests/tmp/random        | Modules       |
+        | tests/tmp/modules       | MyModule      |
+        | tests/tmp/random        | MyModule      |
+        | tests/tmp/random        | Module        |

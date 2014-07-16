@@ -1,0 +1,12 @@
+<?php
+namespace Module\Admin\Controller;
+
+use BaseController;
+
+abstract class AdminModuleBaseController extends BaseController
+{
+	public function __construct()
+	{
+
+	}
+}

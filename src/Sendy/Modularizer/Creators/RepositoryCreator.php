@@ -9,10 +9,10 @@ use Illuminate\Filesystem\Filesystem;
 class RepositoryCreator extends Creator
 {
 	protected $directories = [
-		'RepositoryInterfaces/Read',
-		'RepositoryInterfaces/Write',
-		'Repositories/Read',
-		'Repositories/Write',
+		'RepositoryInterface/Read',
+		'RepositoryInterface/Write',
+		'Repository/Read',
+		'Repository/Write',
 	];
 
 	/**
@@ -20,10 +20,10 @@ class RepositoryCreator extends Creator
 	 * @var array
 	 */
 	protected $files = [
-		'templates/repository-interfaces/ModelRepositoryReaderInterface.txt' => 'RepositoryInterfaces/Read/{{MODEL}}RepositoryReaderInterface.php',
-		'templates/repository-interfaces/ModelRepositoryWriterInterface.txt' => 'RepositoryInterfaces/Write/{{MODEL}}RepositoryWriterInterface.php',
-		'templates/repositories/ModelRepositoryReader.txt'                   => 'Repositories/Read/{{MODEL}}RepositoryReader.php',
-		'templates/repositories/ModelRepositoryWriter.txt'                   => 'Repositories/Write/{{MODEL}}RepositoryWriter.php',
+		'template/repository-interface/ModelRepositoryReaderInterface.txt' => 'RepositoryInterface/Read/{{MODEL}}RepositoryReaderInterface.php',
+		'template/repository-interface/ModelRepositoryWriterInterface.txt' => 'RepositoryInterface/Write/{{MODEL}}RepositoryWriterInterface.php',
+		'template/repository/ModelRepositoryReader.txt'                    => 'Repository/Read/{{MODEL}}RepositoryReader.php',
+		'template/repository/ModelRepositoryWriter.txt'                    => 'Repository/Write/{{MODEL}}RepositoryWriter.php',
 	];
 
 	public function __construct(Filesystem $f)
@@ -46,7 +46,7 @@ class RepositoryCreator extends Creator
 			//put model name in destination file
 			$destinationFile = $this->makeTemplate($destinationFile, $data);
 
-			//get the template file inside the templates dir
+			//get the template file inside the template dir
 			$templateFile = __DIR__ . "/{$templateFile}";
 			$template = $this->makeTemplate(file_get_contents($templateFile), $data);
 

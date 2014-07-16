@@ -1,0 +1,7 @@
+<?php
+namespace {{BASE_DIRECTORY}}\Core\Validator;
+
+interface ValidatorInterface
+{
+	public function validate(array $input);
+}

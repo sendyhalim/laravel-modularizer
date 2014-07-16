@@ -1,0 +1,14 @@
+<?php
+namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repository\Write;
+
+use {{BASE_DIRECTORY}}\{{MODULE}}\RepositoryInterface\Write\{{MODEL}}RepositoryWriterInterface;
+use {{CORE}}\Repository\BasicRepositoryWriter;
+use {{MODEL}};
+
+class {{MODEL}}RepositoryWriter extends BasicRepositoryWriter implements {{MODEL}}RepositoryWriterInterface
+{
+	public function __construct({{MODEL}} $model)
+	{
+		parent::__construct($model);
+	}
+}

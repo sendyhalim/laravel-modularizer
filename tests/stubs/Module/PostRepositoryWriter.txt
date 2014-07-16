@@ -1,0 +1,14 @@
+<?php
+namespace Module\Admin\Repository\Write;
+
+use Module\Admin\RepositoryInterfaces\Write\MessageToMeRepositoryWriterInterface;
+use Module\Admin\Repository\BasicRepositoryWriter;
+use MessageToMe;
+
+class MessageToMeRepositoryWriter extends BasicRepositoryWriter implements MessageToMeRepositoryWriterInterface
+{
+	public function __construct(MessageToMe $m)
+	{
+		parent::__construct($m);
+	}
+}

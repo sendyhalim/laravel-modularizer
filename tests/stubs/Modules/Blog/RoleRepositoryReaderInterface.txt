@@ -1,9 +1,0 @@
-<?php
-namespace Modules\Blog\RepositoryInterfaces\Read;
-
-use Modules\Haha\RepositoryInterfaces\BasicRepositoryReaderInterface;
-
-interface RoleRepositoryReaderInterface extends BasicRepositoryReaderInterface
-{
-
-}

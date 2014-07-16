@@ -1,0 +1,14 @@
+<?php
+namespace Module\Blog\Repository\Write;
+
+use Module\Blog\RepositoryInterface\Write\RoleRepositoryWriterInterface;
+use Haha\Repository\BasicRepositoryWriter;
+use Role;
+
+class RoleRepositoryWriter extends BasicRepositoryWriter implements RoleRepositoryWriterInterface
+{
+	public function __construct(Role $model)
+	{
+		parent::__construct($model);
+	}
+}

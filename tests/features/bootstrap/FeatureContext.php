@@ -48,7 +48,7 @@ class FeatureContext extends BehatContext
         $moduleCreatorCommand = App::make('Sendy\Modularizer\Commands\ModuleCreatorCommand');
         $this->tester = new CommandTester($moduleCreatorCommand);
 
-        $baseDirectory = 'Modules';
+        $baseDirectory = 'Module';
         $path = 'tests/tmp/modules';
         $this->tester->execute([
             'name' => $moduleName,
@@ -73,8 +73,8 @@ class FeatureContext extends BehatContext
     {
         $preparatorCommand = App::make('Sendy\Modularizer\Commands\PreparatorCommand');
         $this->tester = new CommandTester($preparatorCommand);
-        $path = empty($path) ? 'tests/tmp/modules' : $path;
-        $baseDirectory = empty($baseDirectory) ? 'Modules' : $baseDirectory;
+        $path = empty($path) ? 'tests/tmp/module' : $path;
+        $baseDirectory = empty($baseDirectory) ? 'Module' : $baseDirectory;
 
         $this->tester->execute([
             '--path'          => $path,

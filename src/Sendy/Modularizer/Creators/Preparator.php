@@ -9,11 +9,11 @@ use Illuminate\Filesystem\Filesystem;
 class Preparator extends Creator
 {
 	protected $directories = [
-		'Core/RepositoryInterfaces/Read',
-		'Core/RepositoryInterfaces/Write',
-		'Core/Repositories/Read',
-		'Core/Repositories/Write',
-		'Core/Validators/Interfaces',
+		'Core/RepositoryInterface/Read',
+		'Core/RepositoryInterface/Write',
+		'Core/Repository/Read',
+		'Core/Repository/Write',
+		'Core/Validator',
 	];
 
 	/**
@@ -21,11 +21,11 @@ class Preparator extends Creator
 	 * @var array
 	 */
 	protected $files = [
-		'templates/repository-interfaces/BasicRepositoryReaderInterface.txt' => 'Core/RepositoryInterfaces/Read/BasicRepositoryReaderInterface.php',
-		'templates/repository-interfaces/BasicRepositoryWriterInterface.txt' => 'Core/RepositoryInterfaces/Write/BasicRepositoryWriterInterface.php',
-		'templates/repositories/BasicRepositoryReader.txt'                   => 'Core/Repositories/Read/BasicRepositoryReader.php',
-		'templates/repositories/BasicRepositoryWriter.txt'                   => 'Core/Repositories/Write/BasicRepositoryWriter.php',
-		'templates/validators/ValidatorInterface.txt'                        => 'Core/Validators/Interfaces/ValidatorInterface.php',
+		'template/repository-interface/BasicRepositoryReaderInterface.txt' => 'Core/RepositoryInterface/Read/BasicRepositoryReaderInterface.php',
+		'template/repository-interface/BasicRepositoryWriterInterface.txt' => 'Core/RepositoryInterface/Write/BasicRepositoryWriterInterface.php',
+		'template/repository/BasicRepositoryReader.txt'                    => 'Core/Repository/Read/BasicRepositoryReader.php',
+		'template/repository/BasicRepositoryWriter.txt'                    => 'Core/Repository/Write/BasicRepositoryWriter.php',
+		'template/validator/ValidatorInterface.txt'                        => 'Core/Validator/ValidatorInterface.php',
 	];
 
 	public function __construct(Filesystem $f)

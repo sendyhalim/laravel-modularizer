@@ -9,18 +9,18 @@ use Illuminate\Filesystem\Filesystem;
 class ModuleCreator extends Creator
 {
 	protected $directories = [
-		'Controllers',
-		'Repositories/Read',
-		'Repositories/Write',
-		'RepositoryInterfaces/Read',
-		'RepositoryInterfaces/Write',
+		'Controller',
+		'Repository/Read',
+		'Repository/Write',
+		'RepositoryInterface/Read',
+		'RepositoryInterface/Write',
 		'database/migrations',
 		'views'
 	];
 
 	protected $files = [
-		'templates/controllers/ModuleBaseController.txt' => 'Controllers/{{MODULE}}ModuleBaseController.php',
-		'templates/routes.txt'                           => 'routes.php'
+		'template/controller/ModuleBaseController.txt' => 'Controller/{{MODULE}}ModuleBaseController.php',
+		'template/routes.txt'                           => 'routes.php'
 	];
 
 	public function __construct(Filesystem $f)
@@ -51,7 +51,7 @@ class ModuleCreator extends Creator
 			//replace placeholder in destination file
 			$destinationFile = $this->makeTemplate($destinationFile, $data);
 
-			//get the template file inside the templates dir
+			//get the template file inside the template dir
 			$templateFile = __DIR__ . "/{$templateFile}";
 			$template = $this->makeTemplate(file_get_contents($templateFile), $data);
 

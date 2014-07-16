@@ -1,9 +1,0 @@
-<?php
-namespace MyModules\Admin\RepositoryInterfaces\Read;
-
-use MyModules\Core\RepositoryInterfaces\BasicRepositoryReaderInterface;
-
-interface UserRepositoryReaderInterface extends BasicRepositoryReaderInterface
-{
-
-}
