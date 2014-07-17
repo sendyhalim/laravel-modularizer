@@ -2,7 +2,7 @@
 namespace {{BASE_DIRECTORY}}\{{MODULE}}\Repository\Write;
 
 use {{BASE_DIRECTORY}}\{{MODULE}}\RepositoryInterface\Write\{{MODEL}}RepositoryWriterInterface;
-use {{CORE}}\Repository\BasicRepositoryWriter;
+use {{BASE_DIRECTORY}}\{{CORE}}\Repository\BasicRepositoryWriter;
 use {{MODEL}};
 
 class {{MODEL}}RepositoryWriter extends BasicRepositoryWriter implements {{MODEL}}RepositoryWriterInterface

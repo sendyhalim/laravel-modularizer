@@ -2,7 +2,7 @@
 namespace MyModule\Admin\Repository\Write;
 
 use MyModule\Admin\RepositoryInterface\Write\UserRepositoryWriterInterface;
-use Core\Repository\BasicRepositoryWriter;
+use MyModule\Core\Repository\BasicRepositoryWriter;
 use User;
 
 class UserRepositoryWriter extends BasicRepositoryWriter implements UserRepositoryWriterInterface

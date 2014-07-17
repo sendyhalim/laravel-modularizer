@@ -2,7 +2,7 @@
 namespace Module\Blog\Repository\Read;
 
 use Module\Blog\RepositoryInterface\Read\RoleRepositoryReaderInterface;
-use Haha\Repository\BasicRepositoryReader;
+use Module\Haha\Repository\BasicRepositoryReader;
 use Role;
 
 class RoleRepositoryReader extends BasicRepositoryReader implements RoleRepositoryReaderInterface

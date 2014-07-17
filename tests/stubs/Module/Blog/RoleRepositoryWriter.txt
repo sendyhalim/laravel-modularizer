@@ -2,7 +2,7 @@
 namespace Module\Blog\Repository\Write;
 
 use Module\Blog\RepositoryInterface\Write\RoleRepositoryWriterInterface;
-use Haha\Repository\BasicRepositoryWriter;
+use Module\Haha\Repository\BasicRepositoryWriter;
 use Role;
 
 class RoleRepositoryWriter extends BasicRepositoryWriter implements RoleRepositoryWriterInterface
