@@ -1,6 +1,6 @@
 #Laravel 4 Modularizer
 ---
-[https://github.com/sendyHalim/laravel-modularizer](https://github.com/sendyHalim/laravel-modularizer)
+[https://github.com/sendyhalim/laravel-modularizer](https://github.com/sendyhalim/laravel-modularizer)
 
 This package is still in early development, but it is usable and already tested.
 
